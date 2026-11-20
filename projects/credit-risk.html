@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Credit Risk &amp; Collections Prioritization Platform — Shah Brahim</title>
+<link rel="canonical" href="https://shahbrahim.tech/projects/credit-risk.html">
+<meta name="description" content="Case study: an end-to-end AWS platform predicting loan default and expected dollar loss, with a live scoring API and Power BI collections dashboard.">
+<meta property="og:title" content="Credit Risk & Collections Prioritization Platform — case study">
+<meta property="og:image" content="https://shahbrahim.tech/assets/img/overview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html">Shah Brahim<span>_</span></a>
+  <nav><ul>
+    <li><a href="../index.html#work">Projects</a></li>
+    <li><a href="../index.html#services">Hire me</a></li>
+    <li class="hide-sm"><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul></nav>
+</div></header>
+
+<main><div class="wrap">
+<div class="cs-hero">
+  <a class="back" href="../index.html#work">← All projects</a>
+  <div class="eyebrow" style="margin-top:22px">Case study · Data Engineering · Data Science · BI · IT PM</div>
+  <h1>Credit Risk &amp; Collections Prioritization Platform</h1>
+  <p class="lead">A cloud platform that predicts loan default, turns that prediction into dollar expected loss, and gives a collections team a ranked worklist. I built every layer myself: infrastructure, pipeline, model, API, dashboard and documentation.</p>
+  <div class="btns">
+    <a class="btn primary" href="https://github.com/bremschah2/credit-risk-platform" target="_blank" rel="noopener">View code on GitHub</a>
+    <a class="btn" href="#try">Try the live API</a>
+  </div>
+  <div class="tldr">
+    <div class="stat"><b>12,996</b><span>loans scored</span></div>
+    <div class="stat"><b>$197.1M</b><span>total exposure</span></div>
+    <div class="stat"><b>$27.5M</b><span>expected loss (13.97%)</span></div>
+    <div class="stat"><b>0.148</b><span>Brier score, down from 0.224</span></div>
+  </div>
+</div>
+
+<section style="padding-top:40px"><div class="prose">
+  <div class="eyebrow">The problem</div>
+  <h2>Collections teams can't call everyone</h2>
+  <p>A lender with thousands of open loans needs to know where to spend limited collections effort. A default probability alone isn't enough. A 30% risk on a $2,000 loan matters less than a 15% risk on a $35,000 loan. The platform ranks loans by <strong>expected dollar loss</strong>, so effort goes where the money is.</p>
+</div></section>
+
+<section><div class="eyebrow">Architecture</div>
+  <h2>How the system fits together</h2>
+  <p class="sub">Built on a public Lending Club dataset of 2.26M+ loans. Everything runs on AWS within the free tier.</p>
+  <div class="card" style="padding:18px;overflow-x:auto;background:#f7f8f3"><svg viewBox="0 0 1010 330" role="img" aria-label="Architecture diagram" style="width:100%;height:auto;font-family:Inter,sans-serif"><defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="#0d7a4e"/></marker></defs><g><rect x="10" y="136" width="170" height="58" rx="10" fill="#ffffff" stroke="#d5ddd0" stroke-width="1.5"/><text x="95" y="161" text-anchor="middle" fill="#10291d" font-size="14" font-weight="600">Lending Club CSV</text><text x="95" y="180" text-anchor="middle" fill="#56665c" font-size="12">2.26M+ loans</text></g><g><rect x="215" y="30" width="170" height="58" rx="10" fill="#ffffff" stroke="#d5ddd0" stroke-width="1.5"/><text x="300" y="55" text-anchor="middle" fill="#10291d" font-size="14" font-weight="600">GitHub Actions</text><text x="300" y="74" text-anchor="middle" fill="#56665c" font-size="12">scheduled ETL</text></g><g><rect x="420" y="136" width="170" height="58" rx="10" fill="#ffffff" stroke="#c9a227" stroke-width="2"/><text x="505" y="161" text-anchor="middle" fill="#10291d" font-size="14" font-weight="600">DynamoDB</text><text x="505" y="180" text-anchor="middle" fill="#56665c" font-size="12">single-table NoSQL</text></g><g><rect x="620" y="30" width="170" height="58" rx="10" fill="#ffffff" stroke="#d5ddd0" stroke-width="1.5"/><text x="705" y="55" text-anchor="middle" fill="#10291d" font-size="14" font-weight="600">Model training</text><text x="705" y="74" text-anchor="middle" fill="#56665c" font-size="12">scikit-learn + calibration</text></g><g><rect x="830" y="30" width="170" height="58" rx="10" fill="#ffffff" stroke="#d5ddd0" stroke-width="1.5"/><text x="915" y="55" text-anchor="middle" fill="#10291d" font-size="14" font-weight="600">model.pkl</text><text x="915" y="74" text-anchor="middle" fill="#56665c" font-size="12">calibrated model</text></g><g><rect x="830" y="136" width="170" height="58" rx="10" fill="#ffffff" stroke="#c9a227" stroke-width="2"/><text x="915" y="161" text-anchor="middle" fill="#10291d" font-size="14" font-weight="600">Lambda container</text><text x="915" y="180" text-anchor="middle" fill="#56665c" font-size="12">real-time scoring API</text></g><g><rect x="620" y="250" width="170" height="58" rx="10" fill="#ffffff" stroke="#d5ddd0" stroke-width="1.5"/><text x="705" y="275" text-anchor="middle" fill="#10291d" font-size="14" font-weight="600">GitHub Actions</text><text x="705" y="294" text-anchor="middle" fill="#56665c" font-size="12">weekly batch scoring</text></g><g><rect x="215" y="250" width="170" height="58" rx="10" fill="#ffffff" stroke="#c9a227" stroke-width="2"/><text x="300" y="275" text-anchor="middle" fill="#10291d" font-size="14" font-weight="600">Power BI</text><text x="300" y="294" text-anchor="middle" fill="#56665c" font-size="12">collections dashboard</text></g><line x1="180" y1="150" x2="215" y2="80" stroke="#0d7a4e" stroke-width="1.6" marker-end="url(#a)"/><line x1="180" y1="165" x2="420" y2="165" stroke="#0d7a4e" stroke-width="1.6" marker-end="url(#a)"/><text x="300.0" y="159.0" text-anchor="middle" fill="#56665c" font-size="11">stratified sample</text><line x1="385" y1="80" x2="440" y2="136" stroke="#0d7a4e" stroke-width="1.6" marker-end="url(#a)"/><line x1="560" y1="136" x2="620" y2="85" stroke="#0d7a4e" stroke-width="1.6" marker-end="url(#a)"/><text x="590.0" y="104.5" text-anchor="middle" fill="#56665c" font-size="11">features</text><line x1="790" y1="59" x2="830" y2="59" stroke="#0d7a4e" stroke-width="1.6" marker-end="url(#a)"/><line x1="915" y1="88" x2="915" y2="136" stroke="#0d7a4e" stroke-width="1.6" marker-end="url(#a)"/><line x1="870" y1="88" x2="770" y2="250" stroke="#0d7a4e" stroke-width="1.6" marker-end="url(#a)"/><line x1="620" y1="272" x2="592" y2="194" stroke="#0d7a4e" stroke-width="1.6" marker-end="url(#a)"/><text x="606.0" y="227.0" text-anchor="middle" fill="#56665c" font-size="11">risk scores</text><line x1="440" y1="194" x2="385" y2="255" stroke="#0d7a4e" stroke-width="1.6" marker-end="url(#a)"/><text x="412.5" y="218.5" text-anchor="middle" fill="#56665c" font-size="11">flat export</text></svg></div>
+</section>
+
+<section><div class="eyebrow">Delivery</div>
+  <h2>Built in eight phases</h2>
+  <div class="phase"><div class="n">Phase 0</div><div><h3>AWS foundation</h3><p>IAM roles and DynamoDB provisioning on a zero-cost budget.</p></div></div>
+  <div class="phase"><div class="n">Phase 1</div><div><h3>Schema &amp; data load</h3><p>Single-table NoSQL design and a stratified load that keeps the true default rate.</p></div></div>
+  <div class="phase"><div class="n">Phase 2</div><div><h3>Incremental ETL</h3><p>Batch pipeline on GitHub Actions with a DynamoDB-stored watermark. 27+ unattended scheduled runs.</p></div></div>
+  <div class="phase"><div class="n">Phase 3</div><div><h3>Model &amp; calibration</h3><p>Feature importance, model training and isotonic calibration that fixed overconfidence of up to 34 percentage points.</p></div></div>
+  <div class="phase"><div class="n">Phase 4</div><div><h3>Containerised deployment</h3><p>Docker image on ECR, deployed to Lambda as a real-time API and a weekly batch scoring job.</p></div></div>
+  <div class="phase"><div class="n">Phase 5</div><div><h3>Power BI dashboard</h3><p>Three pages with DAX measures and a what-if recovery-rate parameter.</p></div></div>
+  <div class="phase"><div class="n">Phase 6</div><div><h3>PM artifacts</h3><p>Project charter, RAID log and five Architecture Decision Records.</p></div></div>
+  <div class="phase"><div class="n">Phase 7</div><div><h3>Packaging</h3><p>README, architecture diagram and presentation materials.</p></div></div>
+</section>
+
+<section><div class="prose">
+  <div class="eyebrow">The key finding</div>
+  <h2>The model was confidently wrong, until it was calibrated</h2>
+  <p>The first model ranked loans reasonably well, but its probabilities were overconfident by up to <strong>34 percentage points</strong> at the high-risk end. When those probabilities are multiplied by dollar exposure, that error inflates expected loss on exactly the loans the team would chase first.</p>
+  <p>I diagnosed the problem with reliability analysis and corrected it with <strong>isotonic regression</strong>. The Brier score dropped from 0.2235 to 0.1482, a 34% improvement. Ranking power was unchanged (ROC-AUC 0.696), but the dollar figures can now be trusted.</p>
+  <div class="callout"><strong>Stated honestly:</strong> ROC-AUC of 0.696 is below bureau-based production scorecards, mainly because the public dataset has no credit score field. The model is scoped for <em>relative ranking and collections prioritisation</em>, not automated approve/deny decisions (ADR-004).</div>
+</div></section>
+
+<section><div class="eyebrow">Decisions</div>
+  <h2>Five Architecture Decision Records</h2>
+  <p class="sub">Two AWS relational options were blocked at the account level. That one constraint shaped everything downstream, and each consequence is documented.</p>
+  <table>
+    <tr><th>ADR</th><th>Decision</th><th>Why it matters</th></tr>
+    <tr><td class="num">001</td><td>DynamoDB over Aurora DSQL / Aurora PostgreSQL Serverless</td><td>Both Aurora options were blocked by AWS; DynamoDB is free forever</td></tr>
+    <tr><td class="num">002</td><td>Referential integrity in the application layer, with no foreign keys</td><td>Single-table NoSQL design, enforced in code</td></tr>
+    <tr><td class="num">003</td><td>Scheduled export instead of a live BI connection</td><td>Power BI reads a flat export; no paid connector needed</td></tr>
+    <tr><td class="num">004</td><td>Recovery-rate assumption and model usage boundaries</td><td>Prevents the model being misused for approvals</td></tr>
+    <tr><td class="num">005</td><td>Dependency version pinning for Lambda</td><td>Reproducible container builds</td></tr>
+  </table>
+</section>
+
+<section><div class="eyebrow">Dashboard</div>
+  <h2>What the collections team sees</h2>
+  <figure><img src="../assets/img/overview.png" alt="Portfolio overview"><figcaption>Portfolio overview: headline KPIs, expected loss by grade, and the what-if recovery-rate control.</figcaption></figure>
+  <figure><img src="../assets/img/risk-segmentation.png" alt="Risk segmentation"><figcaption>Risk segmentation: expected loss by purpose and grade, and a grade × home-ownership heatmap.</figcaption></figure>
+  <figure><img src="../assets/img/collections-priority.png" alt="Collections priority list"><figcaption>Collections priority list: unresolved loans ranked by expected loss. This is the team's actual worklist.</figcaption></figure>
+</section>
+
+<section id="try"><div class="eyebrow">Live API</div>
+  <h2>Score a loan yourself</h2>
+  <p class="sub">The scoring model runs as a public AWS Lambda endpoint. Send a loan and get back a default probability and expected loss.</p>
+<pre>curl -X POST "https://r4vtqw4oqhhfduewkvsrlbxsqm0mibxl.lambda-url.us-east-1.on.aws/" \
+  -H "Content-Type: application/json" \
+  -d '{"loan_amount":15000,"annual_income":65000,"dti":18.5,"term_months":36,
+       "sub_grade":"B3","home_ownership":"RENT","employment_length":"5 years",
+       "mort_acc":0,"inq_last_6mths":1,"delinq_2yrs":0}'
+
+→ {"probability_default": 0.1761, "expected_loss": 1717.0, "exposure": 15000.0,
+   "recovery_rate_assumption": 0.35, "model_version": "logreg_v3_calibrated"}</pre>
+  <figure><img src="../assets/img/github-actions-etl.png" alt="GitHub Actions ETL runs"><figcaption>Automation: the ETL and weekly scoring pipelines have run unattended on schedule since deployment.</figcaption></figure>
+</section>
+
+<section><div class="eyebrow">Stack</div>
+  <div class="grid3">
+    <div class="card"><h3>Cloud &amp; infrastructure</h3><p>AWS DynamoDB, Lambda, IAM, ECR · Docker · GitHub Actions</p></div>
+    <div class="card"><h3>Data &amp; ML</h3><p>Python, boto3, pandas · scikit-learn, XGBoost · isotonic calibration, permutation importance</p></div>
+    <div class="card"><h3>BI &amp; delivery</h3><p>Power BI, DAX, what-if parameters · charter, RAID log, ADRs</p></div>
+  </div>
+</section>
+
+<section><div class="eyebrow">Next steps</div>
+  <h2>What I'd add in production</h2>
+  <ul class="clean prose">
+    <li>Model drift monitoring and scheduled recalibration</li>
+    <li>Champion/challenger testing against a gradient-boosted model</li>
+    <li>Authentication and rate limiting on the public API</li>
+    <li>Bureau credit-score features to lift ROC-AUC</li>
+  </ul>
+</section>
+
+<section><div class="contact">
+  <h2>Need something like this for your data?</h2>
+  <div class="btns"><a class="btn gold" href="../index.html#contact">Get in touch</a><a class="btn" href="https://github.com/bremschah2/credit-risk-platform" target="_blank" rel="noopener">Read the code</a></div>
+</div></section>
+</div></main>
+
+<footer><div class="wrap"><span>© 2026 Shah Brahim · Brishka Consulting LLC</span><a href="../index.html">← Back to home</a></div></footer>
+</body>
+</html>
