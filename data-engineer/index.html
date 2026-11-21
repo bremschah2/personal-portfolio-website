@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shah Brahim — Data Engineer</title>
+<link rel="canonical" href="https://shahbrahim.tech/data-engineer/">
+<meta name="description" content="Python, AWS, DynamoDB, Docker and GitHub Actions. I design data systems under real constraints and document every decision so the next engineer understands it.">
+<meta property="og:title" content="Shah Brahim — Data Engineer">
+<meta property="og:description" content="Python, AWS, DynamoDB, Docker and GitHub Actions. I design data systems under real constraints and document every decision so the next engineer understands it.">
+<meta property="og:image" content="https://shahbrahim.tech/assets/img/overview.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="../index.html">Shah Brahim<span>_</span></a>
+  <nav><ul>
+    <li><a href="../index.html#profiles">Profiles</a></li>
+    <li><a href="../index.html#work">Projects</a></li>
+    <li class="hide-sm"><a href="../index.html#about">About</a></li>
+    <li><a href="../index.html#contact">Contact</a></li>
+  </ul></nav>
+</div></header>
+<main><div class="wrap">
+<div class="hero" style="padding-bottom:30px">
+  <div class="pills"><a class="pill" href="../data-analyst/">Data Analyst</a><a class="pill on" href="../data-engineer/">Data Engineer</a><a class="pill" href="../data-scientist/">Data Scientist</a><a class="pill" href="../it-project-manager/">IT Project Manager</a><a class="pill" href="../researcher/">Researcher</a></div>
+  <div class="eyebrow" style="margin-top:28px">Profile · Data Engineer</div>
+  <h1>I build data pipelines that run on schedule, and <em>keep running</em>.</h1>
+  <p class="lead">Python, AWS, DynamoDB, Docker and GitHub Actions. I design data systems under real constraints and document every decision so the next engineer understands it.</p>
+  <div class="avail"><span class="dot"></span>Open to remote roles and contracts worldwide</div>
+  <div class="btns">
+    <a class="btn primary" href="../assets/cv/Shah-Brahim-CV-data-engineer.pdf" target="_blank">Download Data Engineer CV</a>
+    <a class="btn" href="../projects/credit-risk.html">See the evidence</a>
+    <a class="btn" href="../index.html#contact">Contact me</a>
+  </div>
+</div>
+<div class="stats" style="grid-template-columns:repeat(3,1fr)"><div class="stat"><b>90,973</b><span>items in a live DynamoDB table</span></div><div class="stat"><b>27+</b><span>unattended scheduled ETL runs</span></div><div class="stat"><b>$0</b><span>cloud bill: built entirely on the free tier</span></div></div>
+</div>
+
+<section><div class="wrap">
+  <div class="eyebrow">Why hire me</div>
+  <h2>Why you should hire me as a Data Engineer</h2>
+  <div class="grid2" style="margin-top:24px"><div class="card why"><span class="num">01</span><h3>My pipelines run without babysitting</h3><p>My incremental ETL and weekly scoring jobs have run unattended on schedule since deployment.</p></div><div class="card why"><span class="num">02</span><h3>I design well under constraints</h3><p>When both AWS relational options were blocked, I moved to DynamoDB and designed a single-table schema around it, rather than giving up.</p></div><div class="card why"><span class="num">03</span><h3>I treat cost as a requirement</h3><p>The whole platform runs at zero cost risk on AWS's free tier. That discipline transfers directly to your cloud bill.</p></div><div class="card why"><span class="num">04</span><h3>I leave systems others can maintain</h3><p>Five Architecture Decision Records, pinned dependencies and a full README mean the next engineer isn't guessing.</p></div></div>
+</div></section>
+
+<section><div class="wrap grid2" style="align-items:start">
+  <div>
+    <div class="eyebrow">Proof</div>
+    <h2>What I've already done</h2>
+    <p class="sub">From my Credit Risk &amp; Collections Prioritization Platform, seen through a Data Engineer's eyes.</p>
+    <a class="btn primary" href="../projects/credit-risk.html">Read the full case study</a>
+  </div>
+  <div class="card"><ul class="clean"><li>Incremental ETL with a watermark stored in DynamoDB, so each run picks up only new batches</li><li>Single-table NoSQL schema, with referential integrity enforced in the application layer (ADR-002)</li><li>Model packaged in Docker, pushed to ECR and deployed to Lambda as a real-time API and a batch job</li><li>Scheduled export pattern feeding Power BI instead of a paid live connector (ADR-003)</li></ul></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Skills &amp; tools</div>
+  <h2>What I bring to the role</h2>
+  <div class="grid3" style="margin-top:24px"><div class="card"><span class="icon">pipelines</span><p>Python, boto3, pandas, incremental ETL, scheduling with GitHub Actions</p></div><div class="card"><span class="icon">cloud & infrastructure</span><p>AWS DynamoDB, Lambda, ECR, IAM, Docker</p></div><div class="card"><span class="icon">data modelling</span><p>Single-table NoSQL design, SQL, schema and access-pattern design</p></div></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Interview questions, answered</div>
+  <h2>Questions hiring managers ask me</h2>
+  <p class="sub">Straight answers to the questions I'm usually asked for Data Engineer roles.</p>
+  <div class="prose" style="max-width:860px"><details open><summary>Why should we hire you as a Data Engineer?</summary><p>I've built and operated a complete pipeline myself, from ingestion through storage, scheduling and containerised serving, and kept it running in production. I also bring the analyst's and data scientist's view of how the data will be used, which leads to better schemas.</p></details><details><summary>Tell us about a design decision you made under pressure.</summary><p>My first two database choices, Aurora DSQL and Aurora PostgreSQL Serverless, were both blocked at the AWS account level. I moved to DynamoDB, redesigned the data as a single-table NoSQL schema, and recorded the trade-offs in ADR-001 and ADR-002. The constraint ended up producing a cleaner design.</p></details><details><summary>How do you make pipelines incremental and safe to re-run?</summary><p>I store a watermark of the last processed batch in DynamoDB itself. Each scheduled run reads it, loads only what's new, and advances it, so a failed run can simply be run again.</p></details><details><summary>How do you control cloud costs?</summary><p>I make cost a design input. I chose services with a permanent free tier, used on-demand capacity, and picked a scheduled export over a paid live BI connection. The whole platform costs nothing to run.</p></details><details><summary>What would you add for a production setting?</summary><p>Infrastructure as code, monitoring and alerting on pipeline failures, data quality checks at ingestion, and authentication and rate limiting on the public API.</p></details></div>
+</div></section>
+
+<section><div class="wrap"><div class="contact">
+  <div class="eyebrow">Next step</div>
+  <h2>Hiring a Data Engineer?</h2>
+  <p class="sub" style="margin:0 auto 6px">Get the tailored CV, or contact me directly. I reply within one business day.</p>
+  <div class="btns">
+    <a class="btn gold" href="mailto:YOUR_EMAIL">Email me</a>
+    <a class="btn" href="../assets/cv/Shah-Brahim-CV-data-engineer.pdf" target="_blank">Data Engineer CV (PDF)</a>
+    <a class="btn" href="LINKEDIN_URL" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div></div></section>
+</main>
+<footer><div class="wrap"><span>© 2026 Shah Brahim</span><a href="../index.html">← Back to home</a></div></footer>
+</body>
+</html>

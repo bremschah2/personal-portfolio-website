@@ -137,3 +137,19 @@ h1 em{font-style:normal;color:var(--accent);background:linear-gradient(transpare
 .tag{background:var(--bg2)}
 footer{background:var(--bg2)}
 table tr:hover td{background:var(--bg2)}
+
+/* profiles */
+.profiles{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.profile-card{display:flex;flex-direction:column;color:var(--text);transition:transform .15s,border-color .15s}
+.profile-card:hover{text-decoration:none;transform:translateY(-3px);border-color:var(--accent2)}
+.profile-card p{flex:1}
+.profile-card .go{margin-top:14px;font-weight:600;color:var(--accent);font-size:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{font-size:14px;padding:7px 14px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:#fff}
+.pill:hover{text-decoration:none;border-color:var(--accent2);color:var(--text)}
+.pill.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.why .num{font-family:var(--mono);font-weight:600;color:var(--gold-ink);display:block;margin-bottom:8px}
+details summary{color:var(--text)}
+details[open]{border-color:var(--accent2)}
+@media (max-width:1000px){.profiles{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.profiles{grid-template-columns:1fr}.stats{grid-template-columns:1fr!important}}
