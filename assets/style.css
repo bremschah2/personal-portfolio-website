@@ -174,3 +174,8 @@ details[open]{border-color:var(--accent2)}
 
 .logo.duo{flex-direction:column;gap:6px;padding:10px}
 .logo.duo img{max-height:26px}
+
+/* wider logo tiles for wordmark logos */
+.job,.cred{grid-template-columns:112px 1fr}
+.logo{width:112px;height:72px}
+@media (max-width:860px){.job,.cred{grid-template-columns:84px 1fr}.logo{width:84px;height:56px}}
